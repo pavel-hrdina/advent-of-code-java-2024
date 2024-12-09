@@ -14,11 +14,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
  */
 public class TestDayOne {
     /**
-     * The DayOne object to test against
-     */
-    private final DayOne dayOne = new DayOne();
-
-    /**
      * Test the measureNumberDistance method.
      * Takes two lists of integers and returns the distance between them.
      * The lists are sorted, and the method calculates the absolute difference
