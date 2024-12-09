@@ -15,6 +15,17 @@ import java.util.Scanner;
  * The solution for the first day of the advent of code 2024
  */
 public class DayOne {
+    /**
+     * The default constructor
+     */
+    public DayOne() {
+    }
+
+    /**
+     * The main method to read the input file and calculate the total distance between two lists of integers
+     *
+     * @param args the command-line arguments
+     */
     public static void main(String[] args) {
         // Path to the input file
         String fileName = "/home/hrdina/IdeaProjects/advent-of-code-java-2024/input";  // You can modify this to point to your file
@@ -58,7 +69,6 @@ public class DayOne {
 
         } catch (FileNotFoundException e) {
             System.out.println("Error: File not found. Exiting...");
-            e.printStackTrace();
         }
     }
 
@@ -103,13 +113,4 @@ public class DayOne {
         return totalDistance;
     }
 
-    // Method to convert user input string to a List of Integers
-    public static List<Integer> parseInputToList(String input) {
-        List<Integer> list = new ArrayList<>();
-        String[] numbers = input.split(" ");  // Split the input string by spaces
-        for (String num : numbers) {
-            list.add(Integer.parseInt(num));  // Convert each string to an integer
-        }
-        return list;
-    }
 }
