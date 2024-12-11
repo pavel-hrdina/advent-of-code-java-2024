@@ -9,3 +9,7 @@ so far I have completed the following challenges:
 
 - Part 1: 100%
 - Part 2: 100%
+
+--- Day 2: Red-Nosed Reports ---
+
+- Part 1: 0%
