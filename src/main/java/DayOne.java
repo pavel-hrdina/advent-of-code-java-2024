@@ -2,6 +2,7 @@
  * DayOne of the Advent of Code 2024
  *
  * @author Pavel Hrdina
+ * @date December 9, 2024
  */
 
 import java.io.File;
@@ -17,20 +18,32 @@ import java.util.Scanner;
  */
 public class DayOne {
     /**
-     * The default constructor
+     * A static list of integers representing the "left" side in operations involving two lists.
+     * This list is used as an input parameter for various calculations.
      */
-    public DayOne() {
+    private static final List<Integer> leftList = new ArrayList<>();
+
+    /**
+     * Represents a list of integers on the right side that is used in computations
+     * such as measuring distances or similarities between two lists of integers.
+     * This list is paired with the left list to calculate various properties.
+     */
+    private static final List<Integer> rightList = new ArrayList<>();
+
+    /**
+     * Private constructor to prevent instantiation of the DayOne class.
+     * This class is designed to serve as a utility class with static methods.
+     */
+    private DayOne() {
     }
 
     /**
      * The main method to read the input file and calculate the total distance between two lists of integers
      *
      * @param args the command-line arguments
+     * @throws IOException if the file cant be read, throw an exception.
      */
     public static void main(String[] args) throws IOException {
-        List<Integer> leftList = new ArrayList<>();
-        List<Integer> rightList = new ArrayList<>();
-
         try {
             Scanner scanner = new Scanner(new File(args[0]));
 
@@ -50,6 +63,7 @@ public class DayOne {
                 throw new IOException("The files must not be empty.");
             }
             System.out.println("Total Distance: " + calculateTotalDistanceBetweenLists(leftList, rightList));
+            System.out.println("Similarity Score: " + mesureSimularityScore(leftList, rightList));
 
         } catch (FileNotFoundException e) {
             System.out.println("Error: File not found. Exiting...");
@@ -95,6 +109,24 @@ public class DayOne {
             totalDistance.add(Math.abs(leftList.get(i) - rightList.get(i)));
         }
         return totalDistance;
+    }
+
+    /**
+     * This method calculates the number of times a number can be found in the
+     * opposing list and vise versa, then it adds those 'scores together' resulting in one number
+     *
+     * @param leftList  The input list on the left
+     * @param rightList The input list on the right
+     * @return the total score as list.
+     */
+    public static int mesureSimularityScore(List<Integer> leftList, List<Integer> rightList) {
+        int score = 0;
+        for (int i : leftList) {
+            int occurrences = Collections.frequency(rightList, i);
+            score += i * occurrences;
+        }
+
+        return score;
     }
 
 }
