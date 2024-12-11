@@ -8,4 +8,4 @@ so far I have completed the following challenges:
 --- Day 1: Historian Hysteria ---
 
 - Part 1: 100%
-- Part 2: 0%
+- Part 2: 100%
