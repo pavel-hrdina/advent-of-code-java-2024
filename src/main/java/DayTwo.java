@@ -65,6 +65,34 @@ public class DayTwo {
     }
 
     /**
+     * tolerate a single bad level in what would otherwise be a safe report. It's like the bad level never happened!
+     * <p>
+     * Now, the same rules apply as before, except if removing a single level from an unsafe report would make it safe, the report instead counts as safe.
+     *
+     * @param report a two-dimensional integer array where each row represents a report
+     * @return the number of "safe" reports in the given two-dimensional array
+     */
+    public static int getSafeReportsCount(int[][] report) {
+        int safeReports = 0;
+        for (int[] reportRow : report) {
+            if (isSafeReport(reportRow)) {
+                safeReports++;
+            } else {
+                for (int i = 0; i < reportRow.length; i++) {
+                    int[] newReportRow = new int[reportRow.length - 1];
+                    System.arraycopy(reportRow, 0, newReportRow, 0, i);
+                    System.arraycopy(reportRow, i + 1, newReportRow, i, reportRow.length - i - 1);
+                    if (isSafeReport(newReportRow)) {
+                        safeReports++;
+                        break;
+                    }
+                }
+            }
+        }
+        return safeReports;
+    }
+
+    /**
      * Sets the value of the two-dimensional integer array `report` for the `DayTwo` class.
      *
      * @param report a two-dimensional integer array representing the report data to be set

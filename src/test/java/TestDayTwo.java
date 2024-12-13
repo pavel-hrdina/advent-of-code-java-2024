@@ -45,4 +45,12 @@ public class TestDayTwo {
         assertEquals(2, DayTwo.findSafeReports(DayTwo.report));
     }
 
+    /**
+     * Tests the getSafeReports method.
+     */
+    @Test
+    void testGetSafeReports() {
+        assertEquals(4, DayTwo.getSafeReportsCount(DayTwo.report));
+    }
+
 }

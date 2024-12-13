@@ -57,7 +57,7 @@ public class Main {
 //        }
         DayTwo.report = readInputFileToIntArray(args[0]);
         System.out.println("Input Report: " + Arrays.deepToString(readInputFileToIntArray(args[0])));
-        System.out.println("Safe Reports: " + DayTwo.findSafeReports(DayTwo.report));
+        System.out.println("Safe Reports: " + DayTwo.getSafeReportsCount(DayTwo.report));
     }
 
     /**
