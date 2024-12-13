@@ -36,23 +36,27 @@ public class DayTwo {
         return safeReports;
     }
 
+    /**
+     * Determines whether a given report is "safe" based on specific conditions.
+     * A report is safe if the differences between consecutive integers in the array:
+     * - Are within the range of 1 to 3 (inclusive)
+     * - Maintain a valid sequence (either strictly increasing or strictly decreasing) without invalid flips
+     * <p>
+     * A report with a single element or no elements is considered safe by definition.
+     *
+     * @param report an array of integers representing the report to be evaluated
+     * @return true if the report is safe according to the defined conditions; false otherwise
+     */
     public static boolean isSafeReport(int[] report) {
         int len = report.length;
         if (len < 2) return true;  // Single-element or empty reports are considered safe
-
-        // Define the kind of sequence that report starts with:
-        // 1 for increasing (report[1] > report[0]), -1 for decreasing (report[1] < report[0])
         int sequenceKind = (report[0] < report[1]) ? 1 : -1;
 
         for (int i = 0; i < len - 1; ++i) {
             int diff = report[i + 1] - report[i];
-
-            // If difference is not in range 1 to 3 or the sequence of the numbers has wrongly flipped
             if (Math.abs(diff) < 1 || Math.abs(diff) > 3 || sequenceKind * diff < 0) {
                 return false;
             }
-
-            // If the sequence has flipped, flip our sequence indicator
             if (diff < 0 && sequenceKind > 0 || diff > 0 && sequenceKind < 0) {
                 sequenceKind *= -1;
             }
@@ -60,7 +64,11 @@ public class DayTwo {
         return true;
     }
 
-
+    /**
+     * Sets the value of the two-dimensional integer array `report` for the `DayTwo` class.
+     *
+     * @param report a two-dimensional integer array representing the report data to be set
+     */
     public static void setReport(int[][] report) {
         DayTwo.report = report;
     }
